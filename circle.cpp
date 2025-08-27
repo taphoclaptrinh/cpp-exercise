@@ -1,37 +1,62 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
+#include <cmath>
 using namespace std;
 
-
 class Circle {
-    public:
-        double radius;
-        string color;
+private:
+    double radius;
+    string color;
 
-        // Constructor
-        Circle(const double& radius, const string& color){
-            this->radius = radius;
-            this->color = color;
+public:
+    // Setter cho bán kính
+    void setRadius(double r) {
+        if (r > 0) {
+            radius = r;
+        } else {
+            cout << "Ban kinh khong hop le! Phai lon hon 0." << endl;
+            radius = 0;  // hoặc giữ nguyên, hoặc có thể throw lỗi
         }
+    }
 
-        // Kiểm tra bán kính hợp lệ (bán kính phải là số dương)
-        bool isValidRadius() {
-            return this->radius > 0;
+    // Setter cho màu sắc
+    void setColor(const string& c) {
+        if (!c.empty()) {
+            color = c;
+        } else {
+            cout << "Mau sac khong duoc de trong." << endl;
         }
+    }
 
-        // Tính chu vi
-        double circumference() {
-            return 2 * M_PI * this->radius;
-        }
+    // Getter cho bán kính
+    double getRadius() const {
+        return radius;
+    }
 
-        // Tính diện tích
-        double area() {
-            return M_PI * pow(this->radius, 2);
-        }
+    // Getter cho màu sắc
+    string getColor() const {
+        return color;
+    }
 
-        // Hiển thị màu sắc của hình tròn
-        void displayColor() {
-            cout << "Mau sac hinh tron: " << this->color << endl;
-        }
+    // Tính chu vi
+    double circumference() const {
+        return 2 * M_PI * radius;
+    }
+
+    // Tính diện tích
+    double area() const {
+        return M_PI * pow(radius, 2);
+    }
+
+    // Hiển thị màu sắc
+    void displayColor() const {
+        cout << "Mau sac hinh tron: " << color << endl;
+    }
+
+    // Kiểm tra bán kính hợp lệ
+    bool isValidRadius() const {
+        return radius > 0;
+    }
 };
 
 int main() {
@@ -43,17 +68,19 @@ int main() {
     cout << "Nhap mau sac hinh tron: ";
     cin >> color;
 
-    // Tạo đối tượng hình tròn với bán kính và màu sắc nhập từ người dùng
-    Circle circle1(radius, color);
+    Circle circle1;
 
-    // Kiểm tra bán kính hợp lệ
+    // Dùng setter để gán giá trị
+    circle1.setRadius(radius);
+    circle1.setColor(color);
+
     if (circle1.isValidRadius()) {
-        // In ra chu vi, diện tích và màu sắc của hình tròn
-        cout << "Chu vi hinh tron: " << fixed << setprecision(2) << circle1.circumference() << " don vi" << endl;//lam tron sau dau phay 2 don vi
-        cout << "Dien tich hinh tron: " << fixed << setprecision(2) << circle1.area() << " don vi vuong" << endl;
+        cout << fixed << setprecision(2);
+        cout << "Chu vi hinh tron: " << circle1.circumference() << " don vi" << endl;
+        cout << "Dien tich hinh tron: " << circle1.area() << " don vi vuong" << endl;
         circle1.displayColor();
     } else {
-        cout << "Ban kinh khong hop le! Ban kinh phai la so duong." << endl;
+        cout << "Khong the tinh toan vi ban kinh khong hop le." << endl;
     }
 
     return 0;
