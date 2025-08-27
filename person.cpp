@@ -1,42 +1,82 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
 class Person {
-public:
+private:
     string name;
     int age;
     string address;
     string phoneNumber;
 
-    void displayInfo() {
+public:
+    // Setter
+    void setName(const string& n) {
+        if (!n.empty())
+            name = n;
+    }
+
+    void setAge(int a) {
+        if (a >= 0)
+            age = a;
+    }
+
+    void setAddress(const string& addr) {
+        address = addr;
+    }
+
+    void setPhoneNumber(const string& phone) {
+        phoneNumber = phone;
+    }
+
+    // Getter
+    string getName() const {
+        return name;
+    }
+
+    int getAge() const {
+        return age;
+    }
+
+    string getAddress() const {
+        return address;
+    }
+
+    string getPhoneNumber() const {
+        return phoneNumber;
+    }
+
+    // Hiển thị thông tin
+    void displayInfo() const {
         cout << "Name: " << name << endl;
         cout << "Age: " << age << endl;
         cout << "Address: " << address << endl;
-        cout << "Phone Number: " << phoneNumber << endl; // Hiển thị số điện thoại
+        cout << "Phone Number: " << phoneNumber << endl;
     }
 
-    bool isAdult() {
+    // Kiểm tra người trưởng thành
+    bool isAdult() const {
         return age >= 18;
     }
 
-    // Phương thức thay đổi địa chỉ
-    void move(string newAddress) {
+    // Thay đổi địa chỉ
+    void move(const string& newAddress) {
         address = newAddress;
         cout << "Address updated to: " << address << endl;
     }
 
     // Phương thức chào hỏi
-    void greet() {
+    void greet() const {
         cout << "Hello, my name is " << name << "." << endl;
     }
 };
 
 int main() {
     Person person1;
-    person1.name = "John Doe";
-    person1.age = 20;
-    person1.address = "123 Main St";
-    person1.phoneNumber = "123-456-7890";
+    person1.setName("John Doe");
+    person1.setAge(20);
+    person1.setAddress("123 Main St");
+    person1.setPhoneNumber("123-456-7890");
 
     person1.displayInfo();
     person1.greet();
