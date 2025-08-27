@@ -1,26 +1,50 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
 class Student {
-    public:
-        string name;
-        float grade;
+private:
+    string name;
+    float grade;
 
-        Student(const string& name, const float& grade) {  // Constructor
-            this->name = name;
-            this->grade = grade;
-        }
+public:
+    // Setter
+    void setName(const string& n) {
+        if (!n.empty())
+            name = n;
+        else
+            cout << "Name cannot be empty." << endl;
+    }
 
-        void display_Info() {
-            cout << "Name: " << this->name << endl;
-            cout << "Grade: " << this->grade << endl;
-        }
+    void setGrade(float g) {
+        if (g >= 0.0f && g <= 10.0f)
+            grade = g;
+        else
+            cout << "Grade must be between 0 and 10." << endl;
+    }
+
+    // Getter
+    string getName() const {
+        return name;
+    }
+
+    float getGrade() const {
+        return grade;
+    }
+
+    // Hiển thị thông tin
+    void displayInfo() const {
+        cout << "Name: " << name << endl;
+        cout << "Grade: " << grade << endl;
+    }
 };
 
 int main() {
-    Student student1("John", 8.5);  // Tạo đối tượng Student
+    Student student1;
+    student1.setName("John");
+    student1.setGrade(8.5f);
 
-    student1.display_Info();  // Hiển thị thông tin của student1
+    student1.displayInfo();
 
     return 0;
 }
