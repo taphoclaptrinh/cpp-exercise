@@ -1,26 +1,57 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
 class Book {
-    public:
-        string title;  // Tên sách
-        string author;  // Tên tác giả
+private:
+    string title;
+    string author;
 
-        Book(const string& title, const string& author) {  // Constructor
-            this->title = title;
-            this->author = author;
+public:
+    // Setter cho title
+    void setTitle(const string& t) {
+        if (!t.empty()) {
+            title = t;
+        } else {
+            cout << "Title cannot be empty." << endl;
         }
+    }
 
-        void display_Info() {  // Hàm hiển thị thông tin sách
-            cout << "Title: " << this->title << endl;
-            cout << "Author: " << this->author << endl;
+    // Setter cho author
+    void setAuthor(const string& a) {
+        if (!a.empty()) {
+            author = a;
+        } else {
+            cout << "Author cannot be empty." << endl;
         }
+    }
+
+    // Getter cho title
+    string getTitle() const {
+        return title;
+    }
+
+    // Getter cho author
+    string getAuthor() const {
+        return author;
+    }
+
+    // Hàm hiển thị thông tin sách
+    void displayInfo() const {
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+    }
 };
 
 int main() {
-    Book book1("C++ Programming", "Bjarne Stroustrup");  // Tạo đối tượng Book
+    Book book1;
 
-    book1.display_Info();  // Hiển thị thông tin sách
+    // Gán giá trị thông qua setter
+    book1.setTitle("C++ Programming");
+    book1.setAuthor("Bjarne Stroustrup");
+
+    // Hiển thị thông tin sách
+    book1.displayInfo();
 
     return 0;
 }
