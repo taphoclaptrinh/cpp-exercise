@@ -1,38 +1,84 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
 class Course {
-public:
+private:
     string courseName;
     string courseCode;
     int credits;
-    string instructorName; 
+    string instructorName;
 
-    void displayInfo() {
+public:
+    // Setters
+    void setCourseName(const string& name) {
+        courseName = name;
+    }
+
+    void setCourseCode(const string& code) {
+        courseCode = code;
+    }
+
+    void setCredits(int c) {
+        if (c > 0)
+            credits = c;
+        else
+            cout << "Invalid number of credits!" << endl;
+    }
+
+    void setInstructorName(const string& name) {
+        instructorName = name;
+    }
+
+    // Getters
+    string getCourseName() const {
+        return courseName;
+    }
+
+    string getCourseCode() const {
+        return courseCode;
+    }
+
+    int getCredits() const {
+        return credits;
+    }
+
+    string getInstructorName() const {
+        return instructorName;
+    }
+
+    // Hiển thị thông tin khoá học
+    void displayInfo() const {
         cout << "Course Name: " << courseName << endl;
         cout << "Course Code: " << courseCode << endl;
         cout << "Credits: " << credits << endl;
-        cout << "Instructor: " << instructorName << endl; // Hiển thị tên giảng viên
+        cout << "Instructor: " << instructorName << endl;
     }
 
-    bool isHighCredit() {
+    // Kiểm tra số tín chỉ lớn
+    bool isHighCredit() const {
         return credits > 3;
     }
 
-    bool isLabRequired() {
-        return credits > 4; // Nếu tín chỉ lớn hơn 4 thì yêu cầu phòng thí nghiệm
+    // Kiểm tra có cần lab không
+    bool isLabRequired() const {
+        return credits > 4;
     }
 };
 
 int main() {
     Course course1;
-    course1.courseName = "Object Oriented Programming";
-    course1.courseCode = "CS202";
-    course1.credits = 4;
-    course1.instructorName = "Dr. Smith";
 
+    // Gán thông tin thông qua setter
+    course1.setCourseName("Object Oriented Programming");
+    course1.setCourseCode("CS202");
+    course1.setCredits(4);
+    course1.setInstructorName("Dr. Smith");
+
+    // Hiển thị thông tin khóa học
     course1.displayInfo();
-    
+
+    // Kiểm tra số tín chỉ và lab
     if (course1.isHighCredit()) {
         cout << "This is a high credit course." << endl;
     } else {
